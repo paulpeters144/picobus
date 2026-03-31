@@ -1,0 +1,12 @@
+C:\Users\paulp\source\repos\PicoBus\PicoBus.Core\bin\Release\net8.0\PicoBus.Core.deps.json
+C:\Users\paulp\source\repos\PicoBus\PicoBus.Core\bin\Release\net8.0\PicoBus.Core.dll
+C:\Users\paulp\source\repos\PicoBus\PicoBus.Core\bin\Release\net8.0\PicoBus.Core.pdb
+C:\Users\paulp\source\repos\PicoBus\PicoBus.Core\obj\Release\net8.0\PicoBus.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\paulp\source\repos\PicoBus\PicoBus.Core\obj\Release\net8.0\PicoBus.Core.AssemblyInfoInputs.cache
+C:\Users\paulp\source\repos\PicoBus\PicoBus.Core\obj\Release\net8.0\PicoBus.Core.AssemblyInfo.cs
+C:\Users\paulp\source\repos\PicoBus\PicoBus.Core\obj\Release\net8.0\PicoBus.Core.csproj.CoreCompileInputs.cache
+C:\Users\paulp\source\repos\PicoBus\PicoBus.Core\obj\Release\net8.0\PicoBus.Core.sourcelink.json
+C:\Users\paulp\source\repos\PicoBus\PicoBus.Core\obj\Release\net8.0\PicoBus.Core.dll
+C:\Users\paulp\source\repos\PicoBus\PicoBus.Core\obj\Release\net8.0\refint\PicoBus.Core.dll
+C:\Users\paulp\source\repos\PicoBus\PicoBus.Core\obj\Release\net8.0\PicoBus.Core.pdb
+C:\Users\paulp\source\repos\PicoBus\PicoBus.Core\obj\Release\net8.0\ref\PicoBus.Core.dll

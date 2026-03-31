@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>PicoBus</id>
+    <version>0.0.1</version>
+    <title>PicoBus</title>
+    <authors>Paul Q. Peters</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>icon.png</icon>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/paulpeters144/PicoBus</projectUrl>
+    <description>A lightweight, thread-safe, in-memory event bus for .NET. with zero dependencies.</description>
+    <tags>Event Bus EventBus Simple</tags>
+    <repository type="git" url="https://github.com/paulpeters144/PicoBus" commit="3547e6bfd1bd70fb4f1fcbcc13f35dc55fc22240" />
+    <dependencies>
+      <group targetFramework="net8.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\paulp\source\repos\PicoBus\PicoBus.Core\bin\Release\net8.0\PicoBus.Core.dll" target="lib\net8.0\PicoBus.Core.dll" />
+    <file src="C:\Users\paulp\source\repos\PicoBus\icon.png" target="\icon.png" />
+    <file src="C:\Users\paulp\source\repos\PicoBus\README.md" target="\README.md" />
+  </files>
+</package>
