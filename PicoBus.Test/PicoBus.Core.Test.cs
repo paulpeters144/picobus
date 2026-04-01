@@ -1,3 +1,5 @@
+using PicoBus.Core;
+
 namespace PicoBus.Test;
 
 public record UserCreated(string Name);
@@ -8,7 +10,7 @@ public class PicoBusTests
     [Fact]
     public void Fire_PublishesToSingleSubscriber_Successful()
     {
-        var bus = new PicoBus();
+        var bus = new EventBus();
         var eventData = new UserCreated("Alice");
         UserCreated? receivedEvent = null;
 
@@ -22,7 +24,7 @@ public class PicoBusTests
     [Fact]
     public void Fire_PublishesToMultipleSubscribers_Successful()
     {
-        var bus = new PicoBus();
+        var bus = new EventBus();
         var eventData = new OrderPlaced(101);
         int callCount = 0;
 
@@ -38,7 +40,7 @@ public class PicoBusTests
     [Fact]
     public void Fire_NoSubscriberForEventType_DoesNothing()
     {
-        var bus = new PicoBus();
+        var bus = new EventBus();
         int callCount = 0;
 
         bus.CreateSub<OrderPlaced>().OnMessage(_ => callCount++);
@@ -51,7 +53,7 @@ public class PicoBusTests
     [Fact]
     public void Subscription_Dispose_RemovesSubscriberFromBus()
     {
-        var bus = new PicoBus();
+        var bus = new EventBus();
         var eventData = new UserCreated("Charlie");
         int callCount = 0;
 
@@ -69,7 +71,7 @@ public class PicoBusTests
     [Fact]
     public void Subscription_IsActive_BecomesFalseAfterDispose()
     {
-        var bus = new PicoBus();
+        var bus = new EventBus();
         var subscription = bus.CreateSub<UserCreated>().OnMessage(_ => { });
 
         Assert.True(subscription.IsActive);
@@ -103,7 +105,7 @@ public class PicoBusTests
     [Fact]
     public void Fire_HandlerIsNotSet_DoesNotThrowException()
     {
-        var bus = new PicoBus();
+        var bus = new EventBus();
 
         bus.CreateSub<UserCreated>();
 
@@ -115,7 +117,7 @@ public class PicoBusTests
     [Fact]
     public void Fire_SubscriptionBeforeOnMessage_IsHandledWhenHandlerIsSet()
     {
-        var bus = new PicoBus();
+        var bus = new EventBus();
         var eventData = new UserCreated("Eve");
         UserCreated? receivedEvent = null;
 
@@ -134,7 +136,7 @@ public class PicoBusTests
     [Fact]
     public void CreateSub_ReturnsUniqueId()
     {
-        var bus = new PicoBus();
+        var bus = new EventBus();
 
         var sub1 = bus.CreateSub<UserCreated>();
         var sub2 = bus.CreateSub<UserCreated>();
@@ -145,7 +147,7 @@ public class PicoBusTests
     [Fact]
     public async Task Fire_HandlesConcurrentSubscriptions_Safely()
     {
-        var bus = new PicoBus();
+        var bus = new EventBus();
         int finalCount = 0;
         int numTasks = 10;
 
@@ -179,7 +181,7 @@ public class PicoBusTests
     [Fact]
     public void SubCount_InitialCountIsZero()
     {
-        var bus = new PicoBus();
+        var bus = new EventBus();
 
         Assert.Equal(0, bus.SubCount);
     }
@@ -187,7 +189,7 @@ public class PicoBusTests
     [Fact]
     public void SubCount_IncrementsAfterSubscription()
     {
-        var bus = new PicoBus();
+        var bus = new EventBus();
 
         bus.CreateSub<UserCreated>().OnMessage(_ => { });
 
@@ -201,7 +203,7 @@ public class PicoBusTests
     [Fact]
     public void SubCount_DecrementsAfterDispose()
     {
-        var bus = new PicoBus();
+        var bus = new EventBus();
 
         var subA = bus.CreateSub<UserCreated>().OnMessage(_ => { });
         var subB = bus.CreateSub<OrderPlaced>().OnMessage(_ => { });
@@ -222,7 +224,7 @@ public class PicoBusTests
     [Fact]
     public void Clear_RemovesAllSubscriptionsAndResetsCount()
     {
-        var bus = new PicoBus();
+        var bus = new EventBus();
 
         var sub1 = bus.CreateSub<OrderPlaced>();
         sub1.OnMessage(e => { /* handler 1 */ });
@@ -243,7 +245,7 @@ public class PicoBusTests
     [Fact]
     public void OnMessage_ThrowsArgumentNullException_WhenHandlerIsNull()
     {
-        var bus = new PicoBus();
+        var bus = new EventBus();
         var subscription = bus.CreateSub<UserCreated>();
 
         Action<UserCreated>? nullHandler = null;
@@ -257,7 +259,7 @@ public class PicoBusTests
     [Fact]
     public void OnMessage_ThrowsInvalidOperationException_WhenCalledTwice()
     {
-        var bus = new PicoBus();
+        var bus = new EventBus();
         var subscription = bus.CreateSub<UserCreated>();
 
         subscription.OnMessage(_ => { });

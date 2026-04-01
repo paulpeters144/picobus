@@ -1,4 +1,4 @@
-﻿namespace PicoBus;
+﻿namespace PicoBus.Core;
 
 /// <summary>
 /// Represents an active subscription to a specific event type within the PicoBus.

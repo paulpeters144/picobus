@@ -1,11 +1,11 @@
 using System.Collections.Concurrent;
 
-namespace PicoBus;
+namespace PicoBus.Core;
 
 /// <summary>
 /// A very lightweight, thread-safe, in-memory event bus optimized for high-performance dispatch.
 /// </summary>
-public sealed class PicoBus
+public sealed class EventBus
 {
     /// <summary>
     /// Gets the total number of active subscriptions across all event types.
@@ -34,10 +34,7 @@ public sealed class PicoBus
 
         lock (_writeLock)
         {
-            _subscriptions.AddOrUpdate(
-                eventType,
-                _ => new object[] { subscription },
-                (_, current) =>
+            _subscriptions.AddOrUpdate(eventType, _ => [subscription], (_, current) =>
                 {
                     var next = new object[current.Length + 1];
                     Array.Copy(current, next, current.Length);

@@ -1,15 +1,15 @@
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Running;
-using PicoBus;
+using PicoBus.Core;
 
 namespace PicoBus.Benchmarks;
 
 [MemoryDiagnoser]
 public class PicoBusBenchmarks
 {
-    private PicoBus _bus1;
-    private PicoBus _bus10;
-    private PicoBus _bus100;
+    private EventBus _bus1;
+    private EventBus _bus10;
+    private EventBus _bus100;
     private readonly TestEvent _event = new();
 
     public class TestEvent { }
@@ -17,13 +17,13 @@ public class PicoBusBenchmarks
     [GlobalSetup]
     public void Setup()
     {
-        _bus1 = new PicoBus();
+        _bus1 = new EventBus();
         _bus1.CreateSub<TestEvent>().OnMessage(_ => { });
 
-        _bus10 = new PicoBus();
+        _bus10 = new EventBus();
         for (int i = 0; i < 10; i++) _bus10.CreateSub<TestEvent>().OnMessage(_ => { });
 
-        _bus100 = new PicoBus();
+        _bus100 = new EventBus();
         for (int i = 0; i < 100; i++) _bus100.CreateSub<TestEvent>().OnMessage(_ => { });
     }
 
@@ -48,7 +48,7 @@ public class PicoBusBenchmarks
     [Benchmark]
     public void CreateAndDispose()
     {
-        var bus = new PicoBus();
+        var bus = new EventBus();
         var sub = bus.CreateSub<TestEvent>();
         sub.Dispose();
     }
