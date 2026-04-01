@@ -1,6 +1,6 @@
 using System.Collections.Concurrent;
 
-namespace PicoBus.Core;
+namespace PicoBusCore;
 
 /// <summary>
 /// A very lightweight, thread-safe, in-memory event bus optimized for high-performance dispatch.
