@@ -1,3 +1,0 @@
-C:\Users\paulp\source\repos\PicoBus\PicoBus.Core\bin\Release\net8.0\publish\PicoBus.Core.dll
-C:\Users\paulp\source\repos\PicoBus\PicoBus.Core\bin\Release\net8.0\publish\PicoBus.Core.deps.json
-C:\Users\paulp\source\repos\PicoBus\PicoBus.Core\bin\Release\net8.0\publish\PicoBus.Core.pdb
