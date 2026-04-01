@@ -7,9 +7,9 @@ namespace PicoBus.Benchmarks;
 [MemoryDiagnoser]
 public class PicoBusBenchmarks
 {
-    private EventBus _bus1;
-    private EventBus _bus10;
-    private EventBus _bus100;
+    private PicoBus.Core.PicoBus _bus1;
+    private PicoBus.Core.PicoBus _bus10;
+    private PicoBus.Core.PicoBus _bus100;
     private readonly TestEvent _event = new();
 
     public class TestEvent { }
@@ -17,13 +17,13 @@ public class PicoBusBenchmarks
     [GlobalSetup]
     public void Setup()
     {
-        _bus1 = new EventBus();
+        _bus1 = new PicoBus.Core.PicoBus();
         _bus1.CreateSub<TestEvent>().OnMessage(_ => { });
 
-        _bus10 = new EventBus();
+        _bus10 = new PicoBus.Core.PicoBus();
         for (int i = 0; i < 10; i++) _bus10.CreateSub<TestEvent>().OnMessage(_ => { });
 
-        _bus100 = new EventBus();
+        _bus100 = new PicoBus.Core.PicoBus();
         for (int i = 0; i < 100; i++) _bus100.CreateSub<TestEvent>().OnMessage(_ => { });
     }
 
@@ -48,7 +48,7 @@ public class PicoBusBenchmarks
     [Benchmark]
     public void CreateAndDispose()
     {
-        var bus = new EventBus();
+        var bus = new PicoBus.Core.PicoBus();
         var sub = bus.CreateSub<TestEvent>();
         sub.Dispose();
     }

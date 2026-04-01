@@ -5,7 +5,7 @@ namespace PicoBus.Core;
 /// <summary>
 /// A very lightweight, thread-safe, in-memory event bus optimized for high-performance dispatch.
 /// </summary>
-public sealed class EventBus
+public sealed class PicoBus
 {
     /// <summary>
     /// Gets the total number of active subscriptions across all event types.
